@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitt Parmar - ASIC Design Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 25px;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 12px;
+            padding: 20px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            transform: translateX(10px);
+        }
+
+        .experience-header, .project-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-title, .project-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .company, .project-date {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .date {
+            color: #888;
+            font-style: italic;
+            margin-left: auto;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .achievements li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
+            border-radius: 12px;
+            border-left: 4px solid #f093fb;
+        }
+
+        .degree-info h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .university {
+            color: #f093fb;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .gpa {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .certificate {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .certificate:hover {
+            transform: translateY(-5px);
+        }
+
+        .certificate h3 {
+            margin-bottom: 10px;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .education-item {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .experience-header, .project-header {
+                flex-direction: column;
+            }
+            
+            .date {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Mitt Parmar</h1>
+            <p class="subtitle">ASIC Design Engineer & Digital Systems Architect</p>
+            <div class="contact-info">
+                <a href="mailto:mittparmar10@gmail.com" class="contact-item">
+                    <span>📧</span> mittparmar10@gmail.com
+                </a>
+                <a href="tel:+14084138634" class="contact-item">
+                    <span>📱</span> +1 408-413-8634
+                </a>
+                <span class="contact-item">
+                    <span>📍</span> San Jose, California
+                </span>
+                <a href="#" class="contact-item">
+                    <span>💼</span> LinkedIn
+                </a>
+                <a href="#" class="contact-item">
+                    <span>⚡</span> GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="degree-info">
+                    <h3>Masters of Science - Electrical & Electronics Engineering</h3>
+                    <div class="university">San Jose State University</div>
+                    <div class="date">01/2025 – present | San Jose, United States</div>
+                    <p><strong>Relevant Coursework:</strong> Digital System Design & Synthesis, Advanced Computer Architecture, Embedded System Design, SoC Design & Verification with System Verilog</p>
+                </div>
+                <div class="gpa">GPA: 3.9/4.0</div>
+            </div>
+            
+            <div class="education-item">
+                <div class="degree-info">
+                    <h3>Bachelor of Technology - Electronics Engineering</h3>
+                    <div class="university">Birla Vishwakarma Mahavidyalaya</div>
+                    <div class="date">07/2017 – 06/2021 | Anand, India</div>
+                </div>
+                <div class="gpa">GPA: 3.8/4.0</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Verilog</span>
+                        <span class="skill-tag">SystemVerilog</span>
+                        <span class="skill-tag">VHDL</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Scripting Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Perl</span>
+                        <span class="skill-tag">Tcl</span>
+                        <span class="skill-tag">Bash/Shell</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Core Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">RTL Design</span>
+                        <span class="skill-tag">Logic Synthesis</span>
+                        <span class="skill-tag">STA</span>
+                        <span class="skill-tag">UVM</span>
+                        <span class="skill-tag">SVA</span>
+                        <span class="skill-tag">CDC</span>
+                        <span class="skill-tag">DFT</span>
+                        <span class="skill-tag">Low Power Design</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Simulators</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Synopsys VCS</span>
+                        <span class="skill-tag">Design Compiler</span>
+                        <span class="skill-tag">PrimeTime</span>
+                        <span class="skill-tag">Xilinx Vivado</span>
+                        <span class="skill-tag">Intel Quartus</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Bus Protocols</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AMBA AHB</span>
+                        <span class="skill-tag">AXI</span>
+                        <span class="skill-tag">APB</span>
+                        <span class="skill-tag">I2C</span>
+                        <span class="skill-tag">SPI</span>
+                        <span class="skill-tag">UART</span>
+                        <span class="skill-tag">PCIe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Product Owner</div>
+                        <div class="company">Matrix Comsec Pvt. Ltd</div>
+                    </div>
+                    <div class="date">01/2021 – 08/2023 | Vadodara, India</div>
+                </div>
+                <ul class="achievements">
+                    <li>Led end-to-end development lifecycle for IP Camera products, driving strategy, feature prioritization, and market alignment</li>
+                    <li>Gathered and analyzed stakeholder requirements, improving time-to-market for product releases by 30% through iterative refinement</li>
+                    <li>Translated business needs into precise functional specifications using agile tools like user stories and acceptance criteria</li>
+                    <li>Facilitated effective collaboration with development teams by conducting twice-daily stand-up meetings and bi-weekly sprint review meetings</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Projects</h2>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <div class="project-title">RISC-V Single-Cycle Processor (RV32I)</div>
+                        <div class="project-date">Self Motivated Project</div>
+                    </div>
+                    <div class="date">06/2025 – present</div>
+                </div>
+                <ul class="achievements">
+                    <li>Designed a single-cycle RISC-V processor using Verilog HDL with full support for the RV32I instruction set</li>
+                    <li>Implemented a unified datapath architecture with ALU, control logic, register file, and instruction/data memory</li>
+                    <li>Developed a control unit for decoding R, I, S, B, and U-type instructions with accurate control signal generation</li>
+                    <li>Verified functional correctness using RISC-V assembly test cases and waveform analysis in ModelSim and GTKWave</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-title">Cache Memory Controller</div>
+                    <div class="date">04/2025 – 05/2025</div>
+                </div>
+                <ul class="achievements">
+                    <li>Designed a 1KB direct-mapped cache system with 256 lines and 4-byte blocks to interface with a 16KB main memory</li>
+                    <li>Developed an FSM-based cache controller to manage read/write arbitration, cache misses, and write-back operations</li>
+                    <li>Implemented write-back and write-allocate policies with dirty-bit tracking to optimize memory bandwidth</li>
+                    <li>Built address translation logic (Tag, Index, Offset) to support accurate cache mapping and hit/miss detection</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-title">MIPS 5-Stage Pipelined ISA for Dot Product</div>
+                    <div class="date">03/2025</div>
+                </div>
+                <ul class="achievements">
+                    <li>Developed a 5-stage pipelined MIPS processor in Verilog for vector dot product computation</li>
+                    <li>Integrated forwarding logic and branch prediction to reduce stalls from 72 to 9 cycles</li>
+                    <li>Designed IF, ID, EX, MEM, WB modules with hazard detection and custom instruction handling</li>
+                    <li>Simulated instruction flow and verified execution using Vivado with initialized memory blocks</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-title">Pipelined 8-bit Floating-Point Arithmetic Unit</div>
+                    <div class="date">02/2025</div>
+                </div>
+                <ul class="achievements">
+                    <li>Designed a pipelined FP8 adder and multiplier in Verilog targeting low-power, high-throughput arithmetic</li>
+                    <li>Built multi-stage pipeline architecture and verified timing accuracy using Xilinx Vivado</li>
+                    <li>Developed a clock-driven testbench to validate FP8 dot product computation</li>
+                    <li>Applied custom FP format and fixed-point modeling in RTL design and debugging</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Certifications</h2>
+            <div class="certificates">
+                <div class="certificate">
+                    <h3>Building LLM Applications with Prompt Engineering</h3>
+                    <p>NVIDIA</p>
+                </div>
+                <div class="certificate">
+                    <h3>PYTHON for Machine Learning, Neural Networks and Deep Learning</h3>
+                    <p>IIT Kanpur Intensive Training School</p>
+                </div>
+                <div class="certificate">
+                    <h3>Unreal Engine 5 C++ Developer</h3>
+                    <p>Udemy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 10 + 5;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 4 + 4;
+                const delay = Math.random() * 2;
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = left + '%';
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = delay + 's';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Add smooth scroll behavior for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+        
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+        
+        // Add hover effects to skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.background = 'rgba(255, 255, 255, 0.3)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.background = 'rgba(255, 255, 255, 0.2)';
+            });
+        });
+    </script>
+</body>
+</html>
